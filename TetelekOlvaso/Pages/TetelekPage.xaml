@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="TetelekOlvaso.Pages.TetelekPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Tételek"
+    BackgroundColor="#F3F4F6">
+
+    <Grid RowDefinitions="Auto,Auto,*" Padding="16" RowSpacing="14">
+
+        <VerticalStackLayout Spacing="4">
+            <Label
+                Text="📚 Történelem tételek"
+                FontSize="28"
+                FontAttributes="Bold"
+                TextColor="#111827" />
+
+            <Label
+                Text="Válassz ki egy tételt az olvasáshoz"
+                FontSize="14"
+                TextColor="#6B7280" />
+        </VerticalStackLayout>
+
+        <SearchBar
+            Grid.Row="1"
+            x:Name="SearchBarDocs"
+            Placeholder="Keresés tételnév alapján..."
+            BackgroundColor="White"
+            TextChanged="SearchBarDocs_TextChanged" />
+
+        <CollectionView
+            Grid.Row="2"
+            x:Name="DocumentsCollectionView"
+            SelectionMode="None">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                        Margin="0,6"
+                        Padding="14"
+                        CornerRadius="18"
+                        BorderColor="#E5E7EB"
+                        BackgroundColor="White"
+                        HasShadow="False">
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="DocumentTapped" />
+                        </Frame.GestureRecognizers>
+
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="14">
+
+                            <Frame
+                                WidthRequest="52"
+                                HeightRequest="52"
+                                CornerRadius="16"
+                                Padding="0"
+                                BackgroundColor="#EEF2FF"
+                                BorderColor="#C7D2FE"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Start">
+
+                                <Grid>
+                                    <Label
+                                        Text="📄"
+                                        FontSize="24"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center" />
+                                </Grid>
+                            </Frame>
+
+                            <VerticalStackLayout Grid.Column="1" Spacing="5" VerticalOptions="Center">
+                                <Label
+                                    Text="{Binding Order, StringFormat='Tétel {0}'}"
+                                    FontSize="13"
+                                    FontAttributes="Bold"
+                                    TextColor="#4F46E5" />
+
+                                <Label
+                                    Text="{Binding Title}"
+                                    FontSize="17"
+                                    FontAttributes="Bold"
+                                    TextColor="#111827"
+                                    LineBreakMode="WordWrap" />
+
+                                <Label
+                                    Text="Érintsd meg a megnyitáshoz"
+                                    FontSize="13"
+                                    TextColor="#6B7280" />
+                            </VerticalStackLayout>
+
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="TetelekOlvaso.Pages.QuizTetelSelectPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Évszám gyakorló"
+    BackgroundColor="#F3F4F6">
+
+    <Grid RowDefinitions="Auto,*" Padding="16" RowSpacing="14">
+
+        <VerticalStackLayout Spacing="4">
+            <Label
+                Text="⏳ Évszám gyakorló"
+                FontSize="28"
+                FontAttributes="Bold"
+                TextColor="#111827" />
+
+            <Label
+                Text="Válaszd ki, melyik tétel évszámait szeretnéd gyakorolni"
+                FontSize="14"
+                TextColor="#6B7280" />
+        </VerticalStackLayout>
+
+        <CollectionView
+            Grid.Row="1"
+            x:Name="TetelCollectionView"
+            SelectionMode="None">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                        Margin="0,6"
+                        Padding="14"
+                        CornerRadius="18"
+                        BorderColor="#E5E7EB"
+                        BackgroundColor="White"
+                        HasShadow="False">
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TetelTapped" />
+                        </Frame.GestureRecognizers>
+
+                        <HorizontalStackLayout Spacing="12">
+                            <Label
+                                Text="🕒"
+                                FontSize="26"
+                                VerticalOptions="Center" />
+
+                            <VerticalStackLayout Spacing="4">
+                                <Label
+                                    Text="{Binding Title}"
+                                    FontSize="18"
+                                    FontAttributes="Bold"
+                                    TextColor="#111827" />
+
+                                <Label
+                                    Text="{Binding Order, StringFormat='Tétel {0}'}"
+                                    FontSize="13"
+                                    TextColor="#6B7280" />
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+    </Grid>
+</ContentPage>

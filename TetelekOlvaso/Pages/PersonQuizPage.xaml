@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="TetelekOlvaso.Pages.PersonQuizPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Személyek gyakorló"
+    BackgroundColor="#F3F4F6">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+
+            <Label
+                x:Name="TetelLabel"
+                Text="Tétel"
+                FontSize="16"
+                FontAttributes="Bold"
+                TextColor="#4F46E5" />
+
+            <Label
+                x:Name="ScoreLabel"
+                Text="Pontszám: 0"
+                FontSize="18"
+                FontAttributes="Bold"
+                TextColor="#111827" />
+
+            <Frame
+                Padding="16"
+                BackgroundColor="White"
+                CornerRadius="18"
+                BorderColor="#E5E7EB"
+                HasShadow="False">
+
+                <Label
+                    x:Name="QuestionLabel"
+                    FontSize="22"
+                    FontAttributes="Bold"
+                    TextColor="#111827" />
+            </Frame>
+
+            <Button x:Name="AnswerButton1" Clicked="AnswerButton_Clicked" />
+            <Button x:Name="AnswerButton2" Clicked="AnswerButton_Clicked" />
+            <Button x:Name="AnswerButton3" Clicked="AnswerButton_Clicked" />
+            <Button x:Name="AnswerButton4" Clicked="AnswerButton_Clicked" />
+
+            <Label
+                x:Name="ResultLabel"
+                FontSize="16"
+                FontAttributes="Bold"
+                TextColor="#111827" />
+
+            <Button
+                x:Name="RestartButton"
+                Text="Újrakezdés"
+                Clicked="RestartButton_Clicked"
+                IsVisible="False"
+                BackgroundColor="#4F46E5"
+                TextColor="White" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
